@@ -10,3 +10,7 @@ body {
   font-family: 'Mitr', sans-serif;
   background-color: #F3F3F3;
 }
+.image__logo {
+  height: 100%;
+}
+

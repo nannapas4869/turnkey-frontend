@@ -1,59 +1,29 @@
-import { useState } from 'react'
-import { LayoutDashboard, SquareChartGantt, ChartPie, ClipboardPlus, Settings, Circle, Globe } from 'lucide-react';
-import {  Route, Routes } from 'react-router-dom';
-import './App.css';
-import Sidebar, { SidebarItem } from './components/Sidebar';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
+import DashboardLayout from './pages/DashboardLayout';
+import AssignKpi from './pages/AssignKpi';
+import { AuthProvider } from './context/AuthContext';
+
 function App() {
-  const [expanded, setExpanded] = useState(true);
-  const [language, setLanguage] = useState('EN');
-  const handleLanguageChange = (e) => {
-    const newLang = e.target.value;
-    setLanguage(newLang);
-  };
   return (
-    <>
-       <div className="flex">
-        <Sidebar expanded={expanded} setExpaned={setExpanded}>
-          <SidebarItem icon={<SquareChartGantt size={20} />} text="Management" to="/Management"
-          submenu = {[
-              { text: "Department", to: "/Department", icon: <Circle size={10} /> },
-              { text: "Category", to: "/Category", icon: <Circle size={10} /> },
-              { text: "Sub-Caegory", to: "/SubCategory", icon: <Circle size={10} /> },
-          ]} />
-          <SidebarItem
-            icon={<ChartPie size={20} />}
-            text="KPI Management"
-            to="/KPIManagement"
-            submenu={[
-              { text: "Track KPIs", to: "/Track", icon: <Circle size={10} /> },
-            ]}
-          />
-          <SidebarItem icon={<ClipboardPlus size={20} />} text="Report" to="/Report" />
-          <SidebarItem icon={<Settings size={20} />} text="Settings" to="/Settings" />
-          <SidebarItem icon={<Globe size={20} />} text="Language" to="#" 
-          submenu={[
-            {
-              text: (
-                <div onClick={(e) => e.stopPropagation()} style={{ pointerEvents: 'auto' }}>
-                <select value={language} onChange={handleLanguageChange} style={{ pointerEvents: 'auto' }}>
-                  <option value="EN">English</option>
-                  <option value="TH">Thai</option>
-                </select>
-              </div>
-              ),
-            },
-          ]} />
-        </Sidebar>
-        <div className="flex-1 p-4">
-          <Routes>
-            <Route path="/" element={<Login />} />
-            
-          </Routes>
-        </div>
-      </div>
-    </>
-  )
+    <AuthProvider>
+     
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Protected (Dashboard) Routes */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<AssignKpi />} />
+          </Route>
+
+          {/* Fallback Route (if someone goes to root, for example) */}
+          <Route path="*" element={<Login />} />
+        </Routes>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
