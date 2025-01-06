@@ -4,13 +4,144 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Mitr', sans-serif;
-  background-color: #F3F3F3;
-}
-.image__logo {
-  height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Mitr', sans-serif;
+    background-color: #F3F3F3;
 }
 
+.mt__top___3 {
+    margin-top: -3rem;
+}
+.purple__color{
+    border: 2px solid #4F46E5;
+}
+.purple__text {
+    color: #4F46E5;
+}
+.border__color__gray {
+    border: 1px solid #6C6C6C;
+}
+.gray__color {
+    border: 2px solid #6C6C6C;
+}
+.gray__text {
+    color: #6C6C6C;
+}
+.subtext__color {
+    color: #0F0F0E;
+}
+.style__search {
+    background-color: #E8EFF9;
+}
+.border__select__style {
+    border: 2px solid #6C6C6C !important;
+    border-color: #6C6C6C;
+}
+.css-19bb58m {
+    margin: 12px !important;
+}
+.button__style {
+    padding: 0.9rem 2.5rem;
+    border-radius: 8px;
+}
+.background_blue {
+    background-color: #4F46E5;
+    color: white;
+}
+.background_gray {
+    background-color: #D9D9D9;
+}
+.button__style__table {
+    background-color: #26A69A;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+}
+.button__style__table__subcat {
+    background-color: #5175E9;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+}
+.border__color__input {
+    border-color: #ccc;
+}
+.bg-active {
+    background-color: rgba(37,126,126,0.09);
+    padding: 0.4rem 2rem;
+    border-radius: 8px;
+}
+.bg-circle-active {
+    color: #3AA94F;
+}
+.eye__style {
+    font-size: 20px;
+    color: #5175E9;
+}
+.pencil__style {
+    font-size: 20px;
+    color: #FEB135;
+}
+.bin__style {
+    font-size: 20px;
+    color: #FD4444;
+}
+.bg-circle-inactive {
+    color: #6C6C6C;
+}
+.arrow__size {
+    font-size: 30px;
+    cursor: pointer;
+}
+.number__size {
+    font-size: 25px;
+    cursor:pointer;
+}
+.active {
+    text-decoration: underline;
+}
+.text__purple {
+    color: #4F46E5;
+}
+
+input[type="radio"] {
+    scale: 1.5;
+}
+
+.all__kpis {
+    background-color: #E6F6F2;
+}
+.notStart {
+    background-color: #C5C5C5;
+
+}
+.offTrack {
+    background-color: #FD4444;
+    color: white;
+}
+.onTrack {
+   background-color: #FEB135;
+   color: white;
+}
+.completed {
+    background-color: #3AA94F;
+    color: white;
+}
+.padding_0 {
+    padding-bottom: 0 !important;
+}
+.form-group {
+    display: flex;
+    align-items: center; /* Aligns label and input vertically */
+    gap: 10px; /* Adds space between label and input */
+  }
+  
+  .inline-label {
+    display: inline-block; /* Ensures the label is an inline element */
+  }
+  
+  .inline-input {
+    display: inline-block; /* Ensures the input is an inline element */
+  }

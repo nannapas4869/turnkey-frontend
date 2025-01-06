@@ -6,7 +6,6 @@ import { useAuth } from "../context/AuthContext";
 import LoginImg from "../assets/images/login_image.png";
 import TKCBIG from "../assets/images/tkc_logo_big.png";
 import "../index.css";
-import { EyeClosed } from "lucide-react";
 import "remixicon/fonts/remixicon.css";
 import Switch from "../components/Switch";
 
@@ -31,7 +30,7 @@ function Login() {
       <div className="flex flex-row h-screen" style={input_style}>
         <img src={LoginImg} alt="logo_img" className="h-full object-cover" />
 
-        <div className="flex flex-col items-center w-full mt-44">
+        <div className="flex flex-col items-center w-full mt-36">
           <img src={TKCBIG} alt="tkcbig" />
           <h1 className="text-4xl text-[#4F46E5]">Welcome to Turnkey</h1>
 

@@ -24,7 +24,7 @@ import {
               <img
                 src={logo}
                 className={`overflow-hidden transition-all ${
-                  expanded ? "w-10" : "w-0"
+                  expanded ? "w-14" : "w-0"
                 }`}
               />
               <button
