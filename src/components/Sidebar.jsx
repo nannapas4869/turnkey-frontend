@@ -74,17 +74,7 @@ export function SidebarItem({ icon, text, alert, to }) {
 
     const active =
       location.pathname === to 
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (submenuRef.current && !submenuRef.current.contains(event.target)) {
-          setSubmenuOpen(false);
-        }
-      }
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, []);
+
     return (
       <div className="relative">
         <li

@@ -1,14 +1,18 @@
-// src/context/AuthContext.js
-import React, { createContext, useState, useContext } from 'react';
+// AuthContext.js
+import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
+
+export function useAuth() {
+  return useContext(AuthContext);
+}
 
 export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const login = (credentials) => {
-    // In a real app, you'd check credentials on server
-    // For now, we simply set isAuthenticated to true
+  const login = () => {
+    // You might check credentials or call an API here.
+    // If successful, set isAuthenticated to true.
     setIsAuthenticated(true);
   };
 
@@ -21,8 +25,4 @@ export function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
-}
-
-export function useAuth() {
-  return useContext(AuthContext);
 }

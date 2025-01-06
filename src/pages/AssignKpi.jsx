@@ -3,11 +3,12 @@ import "../index.css";
 import Select from "react-select";
 import { useState, useEffect } from "react";
 import makeAnimated from "react-select/animated";
+
 const AssignKpi = () => {
   const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
+    { value: "Sales", label: "Sales" },
+    { value: "IT", label: "IT" },
+    { value: "Marketing", label: "Marketing" },
   ];
   const animatedComponents = makeAnimated();
 
@@ -17,7 +18,19 @@ const AssignKpi = () => {
     subCategory: null,
     kpis: [],
   });
-
+  const kpi = [
+    {
+      value: "First Contact Resolution rate",
+      label: "First Contact Resolution rate",
+    },
+    { value: "Average Response Time", label: "Average Response Time" },
+    { value: "Customer Effort Score", label: "Customer Effort Score" },
+    {
+      value: "Most Active Support Agents",
+      label: "Most Active Support Agents",
+    },
+  ];
+  const options2 = [{ value: "Customer Services", label: "Customer Services" }];
   // Dynamically handle changes for all select fields
   const handleSelectChange = (fieldName, selectedOption) => {
     const value = Array.isArray(selectedOption)
@@ -52,12 +65,16 @@ const AssignKpi = () => {
     console.log("Selected Values:", selectedValues);
     console.log("isAllSelected:", isAllSelected);
   }, [selectedValues]);
+  const [selectedOption, setSelectedOption] = useState("standard");
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.id); // Update the selected option
+  };
 
   return (
     <>
-      <article id="page1" className="bg-white w-full h-full pt-10">
-        <div className="container mx-auto p-4">
-          <div className="flex flex-row justify-center items-center">
+      <article id="page1" className="bg-white w-full mt-5 mb-5">
+        <div className="container mx-auto">
+          <div className="flex flex-row justify-center items-center pt-10">
             <div className="flex flex-col items-center">
               <div className="flex justify-center items-center w-20 h-20 purple__color rounded-full z-10 bg-white">
                 <span className="text-3xl purple__text">1</span>
@@ -105,7 +122,7 @@ const AssignKpi = () => {
           <SearchBar />
           <div className="container mx-auto px-4">
             <div className="mt-10">
-            <label
+              <label
                 htmlFor="options"
                 className="block text-xl font-regular text-gray-700 mb-2"
               >
@@ -124,7 +141,7 @@ const AssignKpi = () => {
                   }
                 />
               </div>
-              </div>
+            </div>
             <div className="mt-10">
               <div className="container mx-auto px-4">
                 <p className="font-light">
@@ -133,11 +150,12 @@ const AssignKpi = () => {
                 <div className="mt-10">
                   <div class="flex items-center mb-4">
                     <input
-                      checked
+                      checked={selectedOption === "standard"}
                       id="standard"
                       type="radio"
                       value=""
                       name="default-radio"
+                      onChange={handleOptionChange}
                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  "
                     />
                     <label
@@ -149,14 +167,16 @@ const AssignKpi = () => {
                   </div>
                   <div class="flex items-center">
                     <input
-                      id="default-radio-2"
+                      checked={selectedOption === "custom"}
+                      id="custom"
                       type="radio"
                       value=""
                       name="default-radio"
+                      onChange={handleOptionChange}
                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 "
                     />
                     <label
-                      for="default-radio-2"
+                      htmlFor="custom"
                       class="ms-4 text-md font-light text-gray-900 dark:text-gray-300"
                     >
                       Custom: Customize KPI Weights to Suit Your Needs.
@@ -165,7 +185,10 @@ const AssignKpi = () => {
                 </div>
                 <div className="mt-10">
                   <div class="form-group">
-                    <label for="name" class="inline-label text-md font-light">
+                    <label
+                      htmlFor="name"
+                      class="inline-label text-md font-light"
+                    >
                       Weights:
                     </label>
                     <input
@@ -173,35 +196,50 @@ const AssignKpi = () => {
                       name="weight"
                       value={formValues.weight}
                       onChange={handleInputChange}
+                      disabled={selectedOption === "standard"}
                       className="border p-3 w-5/12 rounded"
                     />
                   </div>
                 </div>
-                <p className="text-md font-light text-red-500 mt-5 mb-5">*Ensure the Total Weight Doesn't Exceed 100%</p>
+                <p className="text-md font-light text-red-500 mt-5 mb-5">
+                  *Ensure the Total Weight Doesn't Exceed 100%
+                </p>
               </div>
             </div>
             <div className="border-b-2 w-2/4"></div>
             <div className="mt-10">
-              <label className="block text-xl mt-5 mb-5">Sub-Category</label>
-              <input
-                type="text"
-                name="subcategory"
-                value={formValues.subcategory}
-                onChange={handleInputChange}
-                className="border p-3 w-2/4 rounded"
-                placeholder="Select Sub - Category"
-              />
+              <label
+                htmlFor="options"
+                className="block text-xl font-regular text-gray-700 mb-2"
+              >
+                Sub-Category
+              </label>
+              <div className="relative w-2/4">
+                <Select
+                  className="basic-single"
+                  classNamePrefix="select"
+                  defaultValue={""}
+                  name="subcat"
+                  options={options}
+                  placeholder="Select Sub-Category"
+                  onChange={(selectedOption) =>
+                    handleSelectChange("category", selectedOption)
+                  }
+                />
+              </div>
             </div>
             <div className="mt-10">
               <label className="block text-xl mt-5 mb-5">Select KPIs</label>
-              <input
-                type="text"
-                name="selectkpi"
-                value={formValues.selectkpi}
-                onChange={handleInputChange}
-                className="border p-3 w-2/4 rounded"
-                placeholder="Select KPIs"
-              />
+              <div className="relative w-2/4">
+                <Select
+                  isMulti
+                  name="kpi"
+                  options={kpi}
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  placeholder="Select KPIs"
+                />
+              </div>
             </div>
           </div>
           <div className="container mx-auto p-4 mt-10">

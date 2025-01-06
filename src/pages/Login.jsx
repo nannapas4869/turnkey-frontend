@@ -10,15 +10,13 @@ import "remixicon/fonts/remixicon.css";
 import Switch from "../components/Switch";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login({ email, password });
-    navigate("/dashboard");
+    login();
+    navigate('/individual'); 
   };
 
   const input_style = {
