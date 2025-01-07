@@ -15,7 +15,7 @@ import Individual from "./pages/Individual";
 import { SquareChartGantt, User, ChartPie, PencilRuler } from "lucide-react";
 import TeamKPI from "./pages/TeamKPI";
 import Measurement from "./pages/Measurement";
-
+import SelectEmployee from "./pages/SelectEmployee";
 function AppContent() {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
@@ -63,7 +63,7 @@ function AppContent() {
           <Route path="/TeamKpi" element={<TeamKPI />} />
           <Route path="/Measurement" element={<Measurement />} />
           <Route path="/AssignKpi" element={<AssignKpi />} />
-
+          <Route path="/selectEmployee" element={<SelectEmployee/>} />
           {/* Catch-all: redirect unknown routes to /login */}
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>

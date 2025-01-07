@@ -2,7 +2,7 @@ import SearchBar from "../components/SearchBar";
 import "../index.css";
 import Select from "react-select";
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import makeAnimated from "react-select/animated";
 const AssignKpi = () => {
   const options = [
@@ -49,10 +49,8 @@ const AssignKpi = () => {
     selectedValues.category !== "" &&
     selectedValues.subCategory !== "" &&
     selectedValues.kpis.length > 0;
-
+    const [selectedOptions, setSelectedOptions] = useState([]);
   useEffect(() => {
-    console.log("Selected Values:", selectedValues);
-    console.log("isAllSelected:", isAllSelected);
   }, [selectedValues]);
   const [selectedOption, setSelectedOption] = useState("standard");
   const handleOptionChange = (event) => {
@@ -60,7 +58,7 @@ const AssignKpi = () => {
   };
 
   const allOptions = [{ value: "select-all", label: "Select All" }, ...kpi];
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  
   const handleChange = (selected) => {
     if (selected?.some((option) => option.value === "select-all")) {
       // If "Select All" is chosen, set all options except "Select All"
@@ -101,22 +99,19 @@ const AssignKpi = () => {
 
   // Update selected values
   
-
+  let isValid
   // Compute if the form is valid
   useEffect(() => {
-    const isValid = categories.length > 0 && categories.every((cat) => {
+    isValid = categories.length > 0 && categories.every((cat) => {
       const { category, subCategory, kpis } = cat.selectedValues;
       return category && subCategory && kpis.length > 0;
     });
+
     setIsNextEnabled(isValid);
   }, [categories]);
 
   // Handle Next button click
-  const handleNext = () => {
-    if (isNextEnabled) {
-      navigate("/next-page"); // Navigate to the next page
-    }
-  };
+  
 
 
   // อัปเดตค่าของ category
@@ -164,6 +159,7 @@ const AssignKpi = () => {
     localStorage.setItem("categories", JSON.stringify(categories));
   }, [categories]);
  
+
   return (
     <>
       <article id="page1" className="bg-white w-full mt-5 mb-5">
@@ -368,10 +364,11 @@ const AssignKpi = () => {
                   <div className="flex items-center mt-3">
                     <input
                       type="radio"
-                      id={`standard-${cat.id}`}
+                      checked={selectedOption === "standard"}
+                      id="standard"
                       name={`calculation-${cat.id}`}
-                      value="standard"
                       className="w-4 h-4"
+                      onChange={handleOptionChange}
                     />
                     <label
                       htmlFor={`standard-${cat.id}`}
@@ -383,9 +380,10 @@ const AssignKpi = () => {
                   <div className="flex items-center mt-5">
                     <input
                       type="radio"
-                      id={`custom-${cat.id}`}
+                      checked={selectedOption === "custom"}
+                      id="custom"
                       name={`calculation-${cat.id}`}
-                      value="custom"
+                      onChange={handleOptionChange}
                       className="w-4 h-4"
                     />
                     <label
@@ -405,10 +403,10 @@ const AssignKpi = () => {
                     <input
                       type="text"
                       id={`weight-${cat.id}`}
-                      value={cat.selectedValues.weight}
-                      onChange={(e) => handleWeightChange(cat.id, e.target.value)}
+                      onChange={(e) => handleInputChange()}
                       className="border p-3 w-full rounded"
                       placeholder="Enter weight"
+                      disabled={selectedOption === "standard"}
                     />
                     <p className="text-md font-light text-red-500 mt-2">
                       *Ensure the Total Weight Doesn't Exceed 100%
@@ -480,13 +478,14 @@ const AssignKpi = () => {
 
 
         <div className="flex justify-end items-end p-4">
+        <Link to="/selectEmployee">
         <button
-          className={`button__style ${isNextEnabled ? "background_blue" : "background_gray"}`}
-          disabled={!isNextEnabled}
-          onClick={handleNext}
+          className={`button__style ${isAllSelected ? "background_blue" : "background_gray"}`}
+          disabled={!isAllSelected}
         >
           Next
         </button>
+        </Link>
       </div>
       </article>
 
