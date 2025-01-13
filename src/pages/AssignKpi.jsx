@@ -2,9 +2,11 @@ import SearchBar from "../components/SearchBar";
 import "../index.css";
 import Select from "react-select";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import makeAnimated from "react-select/animated";
+
 const AssignKpi = () => {
+  const navigate = useNavigate();
   const options = [
     { value: "Sales", label: "Sales" },
     { value: "IT", label: "IT" },
@@ -49,12 +51,13 @@ const AssignKpi = () => {
     selectedValues.category !== "" &&
     selectedValues.subCategory !== "" &&
     selectedValues.kpis.length > 0;
-  console.log(isAllSelected);
-  useEffect(() => {
 
+  useEffect(() => {
+    console.log("Selected Values:", selectedValues);
+    console.log("isAllSelected:", isAllSelected);
   }, [selectedValues]);
   const [selectedOption, setSelectedOption] = useState("standard");
-  const handleOptionChange = (event) => {
+  const handleOptionChanged = (event) => {
     setSelectedOption(event.target.id); // Update the selected option
   };
 
@@ -100,19 +103,22 @@ const AssignKpi = () => {
 
   // Update selected values
   
-  let isValid
+
   // Compute if the form is valid
   useEffect(() => {
-    isValid = categories.length > 0 && categories.every((cat) => {
+    const isValid = categories.length > 0 && categories.every((cat) => {
       const { category, subCategory, kpis } = cat.selectedValues;
       return category && subCategory && kpis.length > 0;
     });
-
     setIsNextEnabled(isValid);
   }, [categories]);
 
   // Handle Next button click
-  
+  const handleNext = () => {
+    if (isAllSelected) {
+      navigate("/SelectEmployee"); // Navigate to the next page
+    }
+  };
 
 
   // อัปเดตค่าของ category
@@ -158,9 +164,12 @@ const AssignKpi = () => {
   useEffect(() => {
     // Save categories to local storage whenever it changes
     localStorage.setItem("categories", JSON.stringify(categories));
-  }, [categories]);
- 
+  }, [categories]); // Default to 'standard'
+  const [weight, setWeight] = useState("");
 
+ const handleInputChanged = (event) => {
+    setWeight(event.target.value); // Update weight value
+  };
   return (
     <>
       <article id="page1" className="bg-white w-full mt-5 mb-5">
@@ -241,8 +250,8 @@ const AssignKpi = () => {
                       id="standard"
                       type="radio"
                       value=""
-                      name="default-radio"
-                      onChange={handleOptionChange}
+                      name="default-radio-2"
+                      onChange={handleOptionChanged}
                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  "
                     />
                     <label
@@ -258,8 +267,8 @@ const AssignKpi = () => {
                       id="custom"
                       type="radio"
                       value=""
-                      name="default-radio"
-                      onChange={handleOptionChange}
+                      name="default-radio-2"
+                      onChange={handleOptionChanged}
                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 "
                     />
                     <label
@@ -364,11 +373,13 @@ const AssignKpi = () => {
                   <p className="font-light">Please select your preferred calculation method.</p>
                   <div className="flex items-center mt-3">
                     <input
+                      chedked={selectedOption === "standard"}
                       type="radio"
-                      checked={selectedOption === "standard"}
                       id={`standard-${cat.id}`}
                       name={`calculation-${cat.id}`}
+                      value="standard"
                       className="w-4 h-4"
+                      onChange={handleOptionChanged}
                     />
                     <label
                       htmlFor={`standard-${cat.id}`}
@@ -380,11 +391,12 @@ const AssignKpi = () => {
                   <div className="flex items-center mt-5">
                     <input
                       type="radio"
-                      checked={selectedOption === "custom"}
                       id={`custom-${cat.id}`}
                       name={`calculation-${cat.id}`}
-
+                      value="custom"
                       className="w-4 h-4"
+                      checked={selectedOption === "custom"}
+                      onChange={handleOptionChanged}
                     />
                     <label
                       htmlFor={`custom-${cat.id}`}
@@ -403,10 +415,11 @@ const AssignKpi = () => {
                     <input
                       type="text"
                       id={`weight-${cat.id}`}
-                      onChange={(e) => handleInputChange()}
+                      value={cat.selectedValues.weight}
+                      onChange={handleInputChange}
+                      disabled={selectedOption === "standard"}
                       className="border p-3 w-full rounded"
                       placeholder="Enter weight"
-                      disabled={selectedOption === "standard"}
                     />
                     <p className="text-md font-light text-red-500 mt-2">
                       *Ensure the Total Weight Doesn't Exceed 100%
@@ -478,14 +491,13 @@ const AssignKpi = () => {
 
 
         <div className="flex justify-end items-end p-4">
-        <Link to="/SelectEmployee">
         <button
           className={`button__style ${isAllSelected ? "background_blue" : "background_gray"}`}
           disabled={!isAllSelected}
+          onClick={handleNext}
         >
           Next
         </button>
-        </Link>
       </div>
       </article>
 

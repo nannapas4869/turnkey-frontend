@@ -4,8 +4,8 @@ import SearchBar_Employee from "../components/SearchBar_employee";
 import { Link } from "react-router-dom";
 import DataTable_Employees from "../components/Datable__Employees";
 import Select from "react-select";
-import { Description, Field, Label, Textarea } from '@headlessui/react'
-import clsx from 'clsx'
+import { Textarea } from '@headlessui/react';
+import Summary from './Summary';
 const Deadline = () => {
     const [selectedDate, setSelectedDate] = useState("");
     const [instruction, setInstruction] = useState(""); 
@@ -95,7 +95,7 @@ const Deadline = () => {
           </div>
           <div className="container mx-auto px-4 pb-10">
             <div className="flex justify-end mt-10 ">
-            <Link to="/Deadline">
+            <Link to="/Summary">
                 <button
                 className={`button__style ${isAllSelected ? "background_blue" : "background_gray"}`}
                 disabled={!isAllSelected}

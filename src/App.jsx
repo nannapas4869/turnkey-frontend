@@ -19,6 +19,9 @@ import SelectEmployee from "./pages/SelectEmployee";
 import AssignEmployee from "./pages/AssignEmployee";
 import AssignedEmployee from "./pages/AssignedEmployee";
 import Deadline from "./pages/Deadline";
+import Summary from "./pages/Summary";
+import CategoryDetail from './pages/CategoryDetail';
+import EmployeeDetail from "./pages/EmployeeDetail";
 function AppContent() {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
@@ -69,7 +72,10 @@ function AppContent() {
           <Route path="/selectEmployee" element={<SelectEmployee/>} />
           <Route path="/AssignEmployee" element={<AssignEmployee/>} />
           <Route path="/AssignedEmployee" element={<AssignedEmployee/>} />
+          <Route path="/CategoryDetail" element={<CategoryDetail/>} />
           <Route path="/Deadline" element={<Deadline />} />
+          <Route path="/EmployeeDetail" element={<EmployeeDetail />} />
+          <Route path="/Summary" element={<Summary />} />
           {/* Catch-all: redirect unknown routes to /login */}
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
