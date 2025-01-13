@@ -10,16 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
+    "@mui/material": "^6.3.1",
+    "@mui/x-date-pickers": "^7.23.6",
     "classnames": "^2.5.1",
     "jquery": "^3.7.1",
+    "keep-react": "^1.6.1",
     "lucide-react": "^0.469.0",
+    "phosphor-react": "^1.4.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.1",
     "react-select": "^5.9.0",
-    "remixicon": "^4.6.0"
+    "remixicon": "^4.6.0",
+    "tailwind-datepicker-react": "^1.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

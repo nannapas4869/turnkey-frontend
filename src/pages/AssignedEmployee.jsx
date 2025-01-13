@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../index.css";
 import SearchBar_Employee from "../components/SearchBar_employee";
 import { Link } from "react-router-dom";
-import DataTable_Employees from "../components/Datatable_Employee";
+import DataTable_Employees from "../components/Datable__Employees";
 import Select from "react-select";
 
 const headers = [
@@ -53,7 +53,7 @@ const options = [
   { value: "Inactive", label: "Inactive" },
 ];
 
-const SelectEmployee = () => {
+const AssignedEmployee = () => {
   const [categories, setCategories] = useState([]);
   const [isNextEnabled, setIsNextEnabled] = useState(false);
 
@@ -158,10 +158,9 @@ const SelectEmployee = () => {
             <DataTable_Employees headers={headers} data={data1} />
           </div>
         </div>
-        
       </article>
     </div>
   );
 };
 
-export default SelectEmployee;
+export default AssignedEmployee;

@@ -49,8 +49,9 @@ const AssignKpi = () => {
     selectedValues.category !== "" &&
     selectedValues.subCategory !== "" &&
     selectedValues.kpis.length > 0;
-    const [selectedOptions, setSelectedOptions] = useState([]);
+  console.log(isAllSelected);
   useEffect(() => {
+
   }, [selectedValues]);
   const [selectedOption, setSelectedOption] = useState("standard");
   const handleOptionChange = (event) => {
@@ -58,7 +59,7 @@ const AssignKpi = () => {
   };
 
   const allOptions = [{ value: "select-all", label: "Select All" }, ...kpi];
-  
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const handleChange = (selected) => {
     if (selected?.some((option) => option.value === "select-all")) {
       // If "Select All" is chosen, set all options except "Select All"
@@ -365,10 +366,9 @@ const AssignKpi = () => {
                     <input
                       type="radio"
                       checked={selectedOption === "standard"}
-                      id="standard"
+                      id={`standard-${cat.id}`}
                       name={`calculation-${cat.id}`}
                       className="w-4 h-4"
-                      onChange={handleOptionChange}
                     />
                     <label
                       htmlFor={`standard-${cat.id}`}
@@ -381,9 +381,9 @@ const AssignKpi = () => {
                     <input
                       type="radio"
                       checked={selectedOption === "custom"}
-                      id="custom"
+                      id={`custom-${cat.id}`}
                       name={`calculation-${cat.id}`}
-                      onChange={handleOptionChange}
+
                       className="w-4 h-4"
                     />
                     <label
@@ -478,7 +478,7 @@ const AssignKpi = () => {
 
 
         <div className="flex justify-end items-end p-4">
-        <Link to="/selectEmployee">
+        <Link to="/SelectEmployee">
         <button
           className={`button__style ${isAllSelected ? "background_blue" : "background_gray"}`}
           disabled={!isAllSelected}

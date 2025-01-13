@@ -23,6 +23,9 @@ body {
 .border__color__gray {
     border: 1px solid #6C6C6C;
 }
+.border__color__purple {
+    border: 1px solid #4F46E5;
+}
 .gray__color {
     border: 2px solid #6C6C6C;
 }
