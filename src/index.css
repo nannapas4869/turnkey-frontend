@@ -148,3 +148,144 @@ input[type="radio"] {
   .inline-input {
     display: inline-block; /* Ensures the input is an inline element */
   }
+
+ 
+
+  .chart-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.donut-chart {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#4CAF50 0% 81%, #ccc 81% 100%);
+}
+
+.donut-chart::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px; /* Inner circle size */
+    height: 140px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.chart-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+.donut-chart-2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#FEB135 0% 65%, #ccc 65% 100%);
+}
+.donut-chart-2::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px; /* Inner circle size */
+    height: 140px;
+    border-radius: 50%;
+    background-color: white;
+}
+.chart-label-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #FEB135;
+}
+.donut-chart-3 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#FD4444 0% 15%, #ccc 15% 100%);
+}
+.donut-chart-3::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px; /* Inner circle size */
+    height: 140px;
+    border-radius: 50%;
+    background-color: white;
+}
+.chart-label-3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #FD4444;
+}
+.donut-chart-3 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#FD4444 0% 15%, #ccc 15% 100%);
+}
+.donut-chart-3::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px; /* Inner circle size */
+    height: 140px;
+    border-radius: 50%;
+    background-color: white;
+}
+.chart-label-3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #FD4444;
+}
+.donut-chart-4 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#FEB135 0% 42%, #ccc 42% 100%);
+}
+.donut-chart-4::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px; /* Inner circle size */
+    height: 140px;
+    border-radius: 50%;
+    background-color: white;
+}
+.chart-label-4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #FEB135;
+}
