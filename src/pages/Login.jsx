@@ -28,7 +28,7 @@ function Login() {
       <div className="flex flex-row h-screen" style={input_style}>
         <img src={LoginImg} alt="logo_img" className="h-full object-cover" />
 
-        <div className="flex flex-col items-center w-full mt-36">
+        <div className="flex flex-col items-center w-full mt-12">
           <img src={TKCBIG} alt="tkcbig" />
           <h1 className="text-4xl text-[#4F46E5]">Welcome to Turnkey</h1>
 

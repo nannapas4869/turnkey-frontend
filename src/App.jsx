@@ -59,7 +59,7 @@ function AppContent() {
       )}
 
       {/* Main Content Area */}
-      <div className="flex-1 px-4">
+      <div className="flex-1">
         <Routes>
           {/* Unprotected Route for Login */}
           <Route path="/login" element={<Login />} />

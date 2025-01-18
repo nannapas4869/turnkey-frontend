@@ -1,6 +1,9 @@
 import "../index.css";
 import React, { useState } from "react";
+<<<<<<< Updated upstream
 import DatePicker from "react-datepicker";
+=======
+>>>>>>> Stashed changes
 
 const Individual = () => {
   const [selectedDate, setSelectedDate] = useState(null);
