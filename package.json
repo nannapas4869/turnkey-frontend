@@ -14,7 +14,9 @@
     "@emotion/styled": "^11.14.0",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
-    "@mui/material": "^6.3.1",
+    "@material-tailwind/react": "^2.1.10",
+    "@mui/icons-material": "^6.4.0",
+    "@mui/material": "^6.4.0",
     "@mui/x-date-pickers": "^7.23.6",
     "classnames": "^2.5.1",
     "date-fns": "^3.6.0",
@@ -28,7 +30,9 @@
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.1",
     "react-select": "^5.9.0",
+    "react-slick": "^0.30.3",
     "remixicon": "^4.6.0",
+    "slick-carousel": "^1.8.1",
     "tailwind-datepicker-react": "^1.4.3"
   },
   "devDependencies": {

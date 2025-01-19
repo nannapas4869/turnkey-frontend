@@ -22,13 +22,14 @@ import Deadline from "./pages/Deadline";
 import Summary from "./pages/Summary";
 import CategoryDetail from './pages/CategoryDetail';
 import EmployeeDetail from "./pages/EmployeeDetail";
+import Measurement_2 from "./pages/Measurement_2";
 function AppContent() {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
 
   // Check if the current path is "/login"
   const isLoginRoute = location.pathname === "/login";
-
+  const isLoginPage = location.pathname === "/login";
   return (
     <div className="app-container flex">
 
@@ -59,7 +60,7 @@ function AppContent() {
       )}
 
       {/* Main Content Area */}
-      <div className="flex-1">
+      <div className={`${isLoginPage ? "w-full" : "px-4 w-full"}`}>
         <Routes>
           {/* Unprotected Route for Login */}
           <Route path="/login" element={<Login />} />
@@ -75,6 +76,7 @@ function AppContent() {
           <Route path="/CategoryDetail" element={<CategoryDetail/>} />
           <Route path="/Deadline" element={<Deadline />} />
           <Route path="/EmployeeDetail" element={<EmployeeDetail />} />
+          <Route path="/Measurement_2" element={<Measurement_2 />} />
           <Route path="/Summary" element={<Summary />} />
           {/* Catch-all: redirect unknown routes to /login */}
           <Route path="*" element={<Navigate to="/login" />} />

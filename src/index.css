@@ -289,3 +289,13 @@ input[type="radio"] {
     font-weight: bold;
     color: #FEB135;
 }
+.height {
+    margin-bottom: 2rem !important;
+}
+.height-level {
+    height: 130%;
+}
+.w-h {
+    width: 30px;
+    height: 30px;
+}
