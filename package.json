@@ -33,6 +33,7 @@
     "react-slick": "^0.30.3",
     "remixicon": "^4.6.0",
     "slick-carousel": "^1.8.1",
+    "swiper": "^11.2.1",
     "tailwind-datepicker-react": "^1.4.3"
   },
   "devDependencies": {

@@ -1,8 +1,7 @@
 import "../index.css";
 import React, { useState } from "react";
 import "remixicon/fonts/remixicon.css";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+
 import Trend from "../assets/images/trand.png";
 import Select from "react-select";
 const Individual = () => {
@@ -553,7 +552,7 @@ const Individual = () => {
                   <span className="text-sm text-gray-600 mt-1 mb-4">Feb</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="bg-red-500 h-3/4 w-4 rounded-full h-24"></div>
+                  <div className="bg-red-500 h-3/4 w-4 rounded-full h-32"></div>
                   <span className="text-sm text-gray-600 mt-1 mb-4">Mar</span>
                 </div>
                 <div className="flex flex-col items-center">

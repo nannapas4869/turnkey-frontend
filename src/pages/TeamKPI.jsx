@@ -1,15 +1,17 @@
 import "../index.css";
 import React, { useState } from "react";
 import "remixicon/fonts/remixicon.css";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import OLGA from "../assets/images/olga.png";
 import Trend from "../assets/images/trand.png";
 import Select from "react-select";
 import Andrew from "../assets/images/Andrew.png";
 import Milton from "../assets/images/milton.png";
 import Lisa from "../assets/images/lisa.png";
-import Lena from "../assets/images/L.png";
-
+import Ola from "../assets/images/Ola.png"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 const TeamKPI = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [dataSectionOne, setDataSectionOne] = useState([
@@ -132,6 +134,52 @@ const TeamKPI = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const profiles = [
+    {
+      name: "Andrew Mayer",
+      role: "Security Manager",
+      score: "69 (B)",
+      scoreColor: "#FEB135",
+      image: Andrew,
+    },
+    {
+      name: "Milton Ondricka",
+      role: "Chief Tactics Technician",
+      score: "15 (D)",
+      scoreColor: "#FD4444",
+      image: Milton,
+    },
+    {
+      name: "Lisa Rau",
+      role: "Future Division Representative",
+      score: "94 (A)",
+      scoreColor: "#3AA94F",
+      image: Lisa,
+    },
+    {
+      name: "Lena Runte",
+      role: "Chief Applications Engineer",
+      score: "47 (C)",
+      scoreColor: "#FD4444",
+      image: Ola,
+    },
+    {
+      name: "Additional User",
+      role: "Extra Role",
+      score: "75 (B)",
+      scoreColor: "#FEB135",
+      image: Andrew, 
+    },
+  ];
+  function chunkArray(array, size) {
+    const result = [];
+    for (let i = 0; i < array.length; i += size) {
+      result.push(array.slice(i, i + size));
+    }
+    return result;
+  }
+  const chunkedProfiles = chunkArray(profiles, 4);
+
   return (
     <>
     <h1>Dashboard</h1>
@@ -208,12 +256,12 @@ const TeamKPI = () => {
           <div class="">
             <table
               id="myTable"
-              class="min-w-full border-collapse text-left text-sm text-gray-500"
+              class="min-w-full border-collapse text-left text-sm text-gray-500 "
             >
-              <thead className="text-gray-700">
-                <tr className="border-b">
+              <thead className="text-gray-700 ">
+                <tr className="">
                   <th
-                    className="px-4 py-2 cursor-pointer"
+                    className="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("KPIs")}
                   >
                     KPIs
@@ -228,7 +276,7 @@ const TeamKPI = () => {
                     )}
                   </th>
                   <th
-                    class="px-4 py-2 cursor-pointer"
+                    class="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("Score")}
                   >
                     Score
@@ -243,7 +291,7 @@ const TeamKPI = () => {
                     )}
                   </th>
                   <th
-                    class="px-4 py-2 cursor-pointer"
+                    class="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("Review")}
                   >
                     Review{" "}
@@ -258,7 +306,7 @@ const TeamKPI = () => {
                     )}
                   </th>
                   <th
-                    className="px-4 py-2 cursor-pointer"
+                    className="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("Evaluation")}
                   >
                     Evaluation Date
@@ -280,7 +328,7 @@ const TeamKPI = () => {
               <tbody>
                 {dataSectionOne.map((row) => (
                   <tr key={row.KPIs} className="hover:bg-gray-50">
-                    <td className=" px-4 py-2 w-2/5">{row.KPIs}</td>
+                    <td className=" px-4 py-2 w-1/5">{row.KPIs}</td>
                     <td
                       className={`px-4 py-2 w-44 ${
                         row.Score === "30%"
@@ -293,7 +341,7 @@ const TeamKPI = () => {
                       {row.Score}
                     </td>
                     <td
-                      className={`px-4 py-2 h-36 ${
+                      className={`px-4 py-2 w-1/5 h-36 ${
                         row.Review === "Adequate"
                           ? "text-yellow-500"
                           : row.Review === "Need help"
@@ -303,7 +351,7 @@ const TeamKPI = () => {
                     >
                       {row.Review}
                     </td>
-                    <td className="px-4 py-2 w-44">{row.Evaluation}</td>
+                    <td className="px-4 py-2 w-1/5">{row.Evaluation}</td>
                     <td className="w-56">
                         <button className="bg-[#4F46E5] text-white px-3 py-2 w-36 rounded-xl" onClick={openModal}><i class="ri-add-line"></i> Add Feedback</button>
                     </td>
@@ -321,7 +369,7 @@ const TeamKPI = () => {
               <thead className="text-gray-700">
                 <tr className="border-b">
                   <th
-                    className="px-4 py-2 cursor-pointer"
+                    className="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("KPIs_2")}
                   >
                     KPIs
@@ -336,7 +384,7 @@ const TeamKPI = () => {
                     )}
                   </th>
                   <th
-                    class="px-4 py-2 cursor-pointer"
+                    class="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("Score_2")}
                   >
                     Score
@@ -351,7 +399,7 @@ const TeamKPI = () => {
                     )}
                   </th>
                   <th
-                    class="px-4 py-2 cursor-pointer"
+                    class="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("Review_2")}
                   >
                     Review{" "}
@@ -366,7 +414,7 @@ const TeamKPI = () => {
                     )}
                   </th>
                   <th
-                    className="px-4 py-2 cursor-pointer"
+                    className="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("Evaluation_2")}
                   >
                     Evaluation Date
@@ -386,9 +434,9 @@ const TeamKPI = () => {
               <tbody>
                 {dataSectionTwo.map((row) => (
                   <tr key={row.KPIs_2} className="hover:bg-gray-50">
-                    <td className=" px-4 py-2 w-2/5">{row.KPIs_2}</td>
+                    <td className=" px-4 py-2 w-1/5">{row.KPIs_2}</td>
                     <td
-                      className={`px-4 py-2 w-36 ${
+                      className={`px-4 py-2 w-36 w-1/5 ${
                         row.Score_2 === "30%"
                           ? "text-yellow-500"
                           : row.Score_2 === "5%"
@@ -399,7 +447,7 @@ const TeamKPI = () => {
                       {row.Score_2}
                     </td>
                     <td
-                      className={`px-4 py-2 w-44 ${
+                      className={`px-4 py-2 w-1/5 ${
                         row.Review_2 === "Adequate"
                           ? "text-yellow-500"
                           : row.Review_2 === "Need help"
@@ -409,8 +457,8 @@ const TeamKPI = () => {
                     >
                       {row.Review_2}
                     </td>
-                    <td className="px-4 py-2 ">{row.Evaluation_2}</td>
-                    <td className="w-56">
+                    <td className="px-4 py-2 w-1/5 ">{row.Evaluation_2}</td>
+                    <td className="w-1/5">
                         <button className="bg-[#4F46E5] text-white px-3 py-2 w-36 rounded-xl"><i class="ri-add-line"></i> Add Feedback</button>
                     </td>
                   </tr>
@@ -427,7 +475,7 @@ const TeamKPI = () => {
               <thead className="text-gray-700">
                 <tr className="border-b">
                   <th
-                    className="px-4 py-2 cursor-pointer"
+                    className="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("KPIs_3")}
                   >
                     KPIs
@@ -442,7 +490,7 @@ const TeamKPI = () => {
                     )}
                   </th>
                   <th
-                    class="px-4 py-2 cursor-pointer"
+                    class="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("Score_3")}
                   >
                     Score
@@ -457,7 +505,7 @@ const TeamKPI = () => {
                     )}
                   </th>
                   <th
-                    class="px-4 py-2 cursor-pointer"
+                    class="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("Review_3")}
                   >
                     Review{" "}
@@ -472,7 +520,7 @@ const TeamKPI = () => {
                     )}
                   </th>
                   <th
-                    className="px-4 py-2 cursor-pointer"
+                    className="px-4 py-2 cursor-pointer w-1/5"
                     onClick={() => handleSort("Evaluation_3")}
                   >
                     Evaluation Date
@@ -491,9 +539,9 @@ const TeamKPI = () => {
               <tbody>
                 {dataSectionThree.map((row) => (
                   <tr key={row.KPIs_3} className="hover:bg-gray-50">
-                    <td className=" px-4 py-2 w-2/5">{row.KPIs_3}</td>
+                    <td className=" px-4 py-2 w-1/5">{row.KPIs_3}</td>
                     <td
-                      className={`px-4 py-2 w-24 ${
+                      className={`px-4 py-2 w-1/5 ${
                         row.Score_3 === "30%"
                           ? "text-yellow-500"
                           : row.Score_3 === "5%"
@@ -504,7 +552,7 @@ const TeamKPI = () => {
                       {row.Score_3}
                     </td>
                     <td
-                      className={`px-4 py-2 w-44 ${
+                      className={`px-4 py-2 w-1/5 ${
                         row.Review_3 === "Adequate"
                           ? "text-yellow-500"
                           : row.Review_3 === "Need help"
@@ -514,7 +562,7 @@ const TeamKPI = () => {
                     >
                       {row.Review_3}
                     </td>
-                    <td className="px-4 py-2 w-44">{row.Evaluation_3}</td>
+                    <td className="px-4 py-2 w-1/5">{row.Evaluation_3}</td>
                     <td className="w-56">
                         <button className="bg-[#4F46E5] text-white px-3 py-2 w-36 rounded-xl"><i class="ri-add-line"></i> Add Feedback</button>
                     </td>
@@ -642,7 +690,7 @@ const TeamKPI = () => {
             <Select options={team} placeholder="ทีมจิรยุทธ์" />
         </div>
         
-        <div className="flex flex-row justify-between  gap-4 mt-10">
+        {/* <div className="flex flex-row justify-center  gap-4 mt-10">
             <div className="flex flex-col justify-center items-center">
                 <img src={Andrew} alt="Andrew" width="200" />
                 <div className="bg-[#26405D] w-64 h-56 rounded-xl">
@@ -679,7 +727,62 @@ const TeamKPI = () => {
                     <button className="bg-white py-3 px-5 block mx-auto rounded-full mt-5">View Detail</button>
                 </div>
             </div>
-        </div>
+        </div> */}
+      <div className="w-full max-w-5xl mx-auto mt-10">
+      <Swiper
+        modules={[Navigation, Pagination]}
+        navigation
+        pagination={{ clickable: true }}
+        // spaceBetween: ระยะห่างระหว่าง Slide แต่ละกลุ่ม
+        spaceBetween={50}
+        // slidesPerView: แสดง "กี่ Slide ต่อครั้ง" 
+        // แต่ละ Slide จะมีภาพ 4 ภาพตาม chunk ที่เราทำ
+        slidesPerView={1}
+        className="mySwiper"
+      >
+        {/* วนลูป chunkedProfiles เพื่อสร้างสไลด์ละ 4 ภาพ */}
+        {chunkedProfiles.map((group, idx) => (
+          <SwiperSlide key={idx}>
+            {/* สร้าง container สำหรับ 4 ภาพใน 1 Slide */}
+            <div className="flex flex-row justify-center gap-4">
+              {group.map((profile, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col justify-center items-center"
+                >
+                  <img src={profile.image} alt={profile.name} width="200" />
+                  <div className="bg-[#26405D] w-60 h-56 rounded-xl ">
+                    <p className="text-white text-xl text-center mt-5">
+                      {profile.name}
+                    </p>
+                    <p className="text-white text-sm text-center font-light">
+                      {profile.role}
+                    </p>
+                    <p
+                      className="text-center text-5xl mt-4"
+                      style={{ color: profile.scoreColor }}
+                    >
+                      {profile.score}
+                    </p>
+                    <button className="bg-white py-3 px-5 block mx-auto rounded-full mt-5">
+                      View Detail
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+     
+
+
+      {/* ลูกศรซ้าย */}
+      <div className="swiper-button-prev custom-prev"></div>
+
+      {/* ลูกศรขวา */}
+      <div className="swiper-button-next custom-next"></div>
     </div>
     <div className="bg-white p-6 border rounded-lg shadow-md w-full mb-5">
         <p className="text-xl font-semibold mt-5">ความคิดเห็น / สิ่งที่ต้องปรับปรุง</p>
