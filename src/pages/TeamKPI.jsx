@@ -182,7 +182,6 @@ const TeamKPI = () => {
 
   return (
     <>
-    <h1>Dashboard</h1>
     <article id="page1" className="bg-white w-full  mt-5 mb-5 rounded-xl">
     <div className="container mx-auto">
     <div className="container mx-auto">

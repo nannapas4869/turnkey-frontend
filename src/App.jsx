@@ -12,7 +12,7 @@ import Sidebar, { SidebarItem } from "./components/Sidebar";
 import Login from "./pages/Login";
 import AssignKpi from "./pages/AssignKpi";
 import Individual from "./pages/Individual";
-import { SquareChartGantt, User, ChartPie, PencilRuler } from "lucide-react";
+import { SquareChartGantt, User, ChartPie, PencilRuler,LayoutDashboard } from "lucide-react";
 import TeamKPI from "./pages/TeamKPI";
 import Measurement from "./pages/Measurement";
 import SelectEmployee from "./pages/SelectEmployee";
@@ -23,6 +23,7 @@ import Summary from "./pages/Summary";
 import CategoryDetail from './pages/CategoryDetail';
 import EmployeeDetail from "./pages/EmployeeDetail";
 import Measurement_2 from "./pages/Measurement_2";
+import Dashboard from "./pages/Dashboard";
 function AppContent() {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
@@ -36,6 +37,11 @@ function AppContent() {
       {/* Only render Sidebar if NOT on the login page */}
       {!isLoginRoute && (
         <Sidebar expanded={true}>
+          <SidebarItem
+            icon={<LayoutDashboard size={20} />}
+            text="Dashboard"
+            to="/dashboard"
+          />
           <SidebarItem
             icon={<User size={20} />}
             text="Individual KPIs Report"
@@ -78,6 +84,7 @@ function AppContent() {
           <Route path="/EmployeeDetail" element={<EmployeeDetail />} />
           <Route path="/Measurement_2" element={<Measurement_2 />} />
           <Route path="/Summary" element={<Summary />} />
+          <Route path="/dashboard" element={<Dashboard/>} />
           {/* Catch-all: redirect unknown routes to /login */}
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
